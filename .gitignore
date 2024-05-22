@@ -1,7 +1,5 @@
 dist
 doc
-index.js
-__tests__
 
 # Logs
 logs
@@ -83,3 +81,4 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+

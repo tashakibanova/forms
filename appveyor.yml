@@ -1,6 +1,6 @@
-image: Ubuntu1804  # образ для сборки
+image: Ubuntu2004  # образ для сборки
 
-stack: node 12  # окружение
+stack: node 18  # окружение
 
 branches:
   only:
@@ -8,8 +8,12 @@ branches:
 
 cache: node_modules  # кеширование
 
-install:
-  - npm install  # команда установки зависимостей
+install: 
+  - sudo apt-get update
+  - sudo apt-get install -y curl
+  - curl -sL https://deb.nodesource.com/setup_current.x | sudo -E bash -
+  - sudo apt-get install -y nodejs
+  - npm install
 
 build: off  # отключаем встроенную в appveyor систему сборки
 
@@ -20,3 +24,5 @@ test_script:
   - npm run lint && npm test  # скрипт тестирования
 
 deploy_script:  # скрипт развёртывания
+
+
