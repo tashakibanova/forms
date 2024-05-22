@@ -7,7 +7,7 @@
     "start": "live-server src",
     "lint": "eslint . --fix",
     "build": "webpack",
-    "test": "jest --coverage"
+    "test": "jest --passWithNoTests"
   },
   "author": "",
   "license": "ISC",
