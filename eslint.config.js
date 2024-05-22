@@ -1,4 +1,5 @@
 module.exports = {
+    ignorePatterns: ["dist", "coverage", "doc"],
     "env": {
         "browser": true,
         "es2021": true,
