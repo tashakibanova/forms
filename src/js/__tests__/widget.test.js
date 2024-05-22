@@ -1,4 +1,4 @@
-import { jest, expect } from '@jest/globals';
+import { expect } from '@jest/globals';
 
 // Функция для имитации клика на кнопку
 function clickButton() {
