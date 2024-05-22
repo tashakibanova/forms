@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    position: relative;
+    margin: 100px 0 0 20px; /* Располагаем контейнер относительно левого края */
+  }
+  
+  #triggerButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .popover {
+    display: none;
+    position: absolute;
+    width: 200px;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    z-index: 1000;
+  }
+  
+  .popover::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; /* Стрелка будет снизу */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent; /* Стрелка треугольник */
+  }
+  
+  .popover-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .popover-content {
+    margin: 10px 0 0;
+  }
