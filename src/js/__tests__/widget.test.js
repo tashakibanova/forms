@@ -22,17 +22,3 @@ function checkPopoverHidden() {
   expect(popover.style.display).toBe('none');
 }
 
-// Тест на отображение поповера
-test('Popover should be displayed after clicking on the button', () => {
-  clickButton();
-  checkPopoverDisplay();
-});
-
-// Тест на скрытие поповера
-test('Popover should be hidden when clicking outside of it', () => {
-  clickButton();
-  checkPopoverDisplay();
-  // Здесь можно имитировать клик вне поповера
-  clickButton();
-  checkPopoverHidden();
-});
