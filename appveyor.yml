@@ -25,4 +25,21 @@ test_script:
 
 deploy_script:  # скрипт развёртывания
 
+# Скрипт деплоя на GitHub Pages
+deploy:
+  provider: GitHub
+  token:
+    secure: jmx31FDJOsS6Arjm5a5bGagA2PSA8JXKkzgKRx4nL/vidrSFDl6z8Q45HKTrpEVT
+  on:
+    branch: master
+  artifact: path/to/build/folder
+
+# Настройки для GitHub Pages
+artifacts:
+  - path: "path/to/build/folder"
+    name: "MyProject"
+
+after_deploy:
+  - cmd: ps: appveyor-retry git push --force --quiet "https://${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}@github.com/tashakibanova/forms.git" master:gh-pages
+
 

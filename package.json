@@ -37,5 +37,8 @@
     "core-js": "^3.37.1",
     "eslint-plugin-jest": "^28.5.0",
     "puppeteer": "^22.10.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   }
 }
