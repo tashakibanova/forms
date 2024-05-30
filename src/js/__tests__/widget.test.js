@@ -1,4 +1,4 @@
-import './widget.js';
+import '../widget.js';
 
 const puppeteer = require('puppeteer');
 
