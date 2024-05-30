@@ -40,6 +40,6 @@ artifacts:
     name: "MyProject"
 
 after_deploy:
-  - cmd: ps: appveyor-retry git push --force --quiet "https://${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}@github.com/tashakibanova/forms.git" master:gh-pages
+  - ps: appveyor-retry git push --force --quiet "https://$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@github.com/tashakibanova/forms.git" master:gh-pages
 
 
