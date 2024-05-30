@@ -1,46 +1,30 @@
 body {
-    font-family: Arial, sans-serif;
-  }
-  
-  .container {
-    position: relative;
-    margin: 100px 0 0 20px; /* Располагаем контейнер относительно левого края */
-  }
-  
-  #triggerButton {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .popover {
-    display: none;
-    position: absolute;
-    width: 200px;
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
-    border-radius: 5px;
-    z-index: 1000;
-  }
-  
-  .popover::after {
-    content: '';
-    position: absolute;
-    bottom: -10px; /* Стрелка будет снизу */
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 10px;
-    border-style: solid;
-    border-color: #333 transparent transparent transparent; /* Стрелка треугольник */
-  }
-  
-  .popover-title {
-    margin: 0;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .popover-content {
-    margin: 10px 0 0;
-  }
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  align-items: center;     /* Центрирование по вертикали */
+  height: 100vh;           /* Высота страницы на весь экран */
+  margin: 0;               /* Убираем внутренние отступы */
+}
+
+.container {
+  display: flex;
+  justify-content: center;  
+  align-items: center;      
+  margin: 0;               
+  padding: 20px;           
+  background-color: #f8f9fa; 
+  border-radius: 8px;     
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.triggerButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative; /* Добавляем позиционирование к кнопке */
+}
+
+.popover {
+  z-index: 1000; /* Увеличим z-index для поповера */
+}

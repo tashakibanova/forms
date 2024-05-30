@@ -5,6 +5,9 @@ module.exports = {
       "jest": true,
       "node": true
   },
+  globals: {
+    bootstrap: 'readonly'
+  },
   "extends": "eslint:recommended",
   "parserOptions": {
       "ecmaVersion": 12,

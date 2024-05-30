@@ -26,12 +26,11 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-          },
-        ],
-      },
+        type: 'asset',
+        generator: {
+        filename: 'static/images/[name].[hash][ext]'
+      }
+    },
       {
         test: /\.css$/,
         use: [

@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "live-server src",
     "lint": "eslint . --fix",
     "build": "webpack",
     "test": "jest --passWithNoTests"
@@ -33,7 +32,10 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
     "core-js": "^3.37.1",
-    "eslint-plugin-jest": "^28.5.0"
+    "eslint-plugin-jest": "^28.5.0",
+    "puppeteer": "^22.10.0"
   }
 }

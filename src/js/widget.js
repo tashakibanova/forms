@@ -1,33 +1,30 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const triggerButton = document.getElementById('triggerButton');
-    const popover = document.getElementById('popover');
+export default document.addEventListener('DOMContentLoaded', function() {
+  var triggerButton = document.querySelector('.triggerButton');
   
-    triggerButton.addEventListener('click', () => {
-      // Получаем координаты кнопки
-      const buttonRect = triggerButton.getBoundingClientRect();
-      
-      // Проверяем текущее состояние видимости поповера
-      if (popover.style.display === 'none' || popover.style.display === '') {
-        // Показываем поповер
-        popover.style.display = 'block';
-        
-        // Получаем размеры поповера
-        const popoverRect = popover.getBoundingClientRect();
-        
-        // Центрируем поповер по горизонтали относительно кнопки
-        popover.style.left = `${buttonRect.left + (buttonRect.width / 2) - (popoverRect.width / 2)}px`;
-        // Располагаем поповер сверху кнопки
-        popover.style.top = `${buttonRect.top - popoverRect.height - 10}px`; // 10px - отступ сверху
-      } else {
-        // Скрываем поповер
-        popover.style.display = 'none';
-      }
-    });
-  
-    // Скрытие поповера при клике вне его области
-    document.addEventListener('click', (event) => {
-      if (!popover.contains(event.target) && !triggerButton.contains(event.target)) {
-        popover.style.display = 'none';
-      }
-    });
+  var popover = new bootstrap.Popover(triggerButton, {
+    trigger: 'manual',
+    placement: 'top',  // Устанавливаем выравнивание поповера сверху
+    html: true,
+    title: triggerButton.getAttribute('data-bs-title'),
+    content: triggerButton.getAttribute('data-bs-content')
   });
+
+  // Показать/скрыть поповер при клике на кнопке
+  triggerButton.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (popover._element.classList.contains('show')) {
+      popover.hide();
+    } else {
+      popover.show();
+    }
+  });
+
+  // Скрытие поповера при клике вне его области
+  document.addEventListener('click', function(e) {
+    if (!triggerButton.contains(e.target) && !document.querySelector('.popover.show')) {
+      popover.hide();
+    }
+  });
+});
+
+
