@@ -1,27 +1,47 @@
-import '../widget.js';
-
 const puppeteer = require('puppeteer');
 
-(async () => {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
+describe('Popover Interaction', () => {
+  let browser;
+  let page;
 
-  // Загружаем страницу
-  await page.goto('http://localhost:8080');
+  beforeAll(async () => {
+    browser = await puppeteer.launch();
+    page = await browser.newPage();
+    await page.goto(`file://${__dirname}/../../index.html`);
 
-  // Ожидаем загрузки страницы
-  await page.waitForSelector('.triggerButton');
-
-  // Нажимаем на кнопку, чтобы показать поповер
-  await page.click('.triggerButton');
-  await page.waitForSelector('.popover.show');
-
-  // Проверяем, что поповер отображается
-  const isPopoverVisible = await page.evaluate(() => {
-    const popover = document.querySelector('.popover');
-    return popover && popover.classList.contains('show');
+    // Инициализируем popover
+    await page.evaluate(() => {
+      const { Popover } = bootstrap;
+      const triggerButton = document.querySelector('.triggerButton');
+      new Popover(triggerButton);
+    });
   });
-  expect(isPopoverVisible).toBe(true);
 
-  await browser.close();
-})();
+  afterAll(async () => {
+    await browser.close();
+  });
+
+  function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }
+
+  test('should show and hide popover on button click', async () => {
+    const button = await page.$('.triggerButton');
+
+    // Кликуем по кнопке и ждем появления поповера
+    await button.click();
+    await delay(1000); // Используем delay для ожидания
+    await page.waitForSelector('.popover', { timeout: 5000 });
+
+    let popoverVisible = await page.$('.popover') !== null;
+    expect(popoverVisible).toBe(true);
+
+    // Еще раз кликуем по кнопке и ждем исчезновения поповера
+    await button.click();
+    await delay(1000); // И здесь тоже используем delay
+    await page.waitForSelector('.popover', { hidden: true, timeout: 5000 });
+
+    popoverVisible = await page.$('.popover') === null;
+    expect(popoverVisible).toBe(true);
+  });
+});

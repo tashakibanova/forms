@@ -1,7 +1,8 @@
-export default document.addEventListener('DOMContentLoaded', function() {
-  var triggerButton = document.querySelector('.triggerButton');
+// Ждем, пока страница полностью загрузится
+window.addEventListener('load', function() {
+  let triggerButton = document.querySelector('.triggerButton');
   
-  var popover = new bootstrap.Popover(triggerButton, {
+  let popover = new bootstrap.Popover(triggerButton, {
     trigger: 'manual',
     placement: 'top',  // Устанавливаем выравнивание поповера сверху
     html: true,
